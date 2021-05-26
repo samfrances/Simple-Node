@@ -6,4 +6,5 @@ services:
   - docker
 
 script:
-  - echo "hello world!"
+  - docker --version
+  - docker build -t simple-node .
