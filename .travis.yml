@@ -8,3 +8,8 @@ services:
 script:
   - docker --version
   - docker build -t simple-node .
+  - docker tag simple-node $DOCKER_HUB/simple-node:latest
+
+after_success:
+  - echo $DOCKER_PASSWORD | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push $DOCKER_HUB/simple-node
